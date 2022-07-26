@@ -67,6 +67,7 @@
     let middleName = 'Pavlivna';
     let lastName = 'Radchuk';
     let pib = firstName + ' ' + middleName + ' ' + lastName;
+    console.log(pib)
 
     let a = 100;
     let b = '100';
@@ -80,9 +81,15 @@
     middleName = prompt('Middle name:');
     lastName = prompt('Last name:');
 
-    console.log(firstName);
-    console.log(middleName);
-    console.log(lastName);
+    // console.log(firstName);
+    // console.log(middleName);
+    // console.log(lastName);
+
+    let bornYear = prompt('Year of born:');
+    let age = + bornYear;
+    age = 2022 - age;
+    console.log(age);
+
 
 </script>
 
