@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.
+    let x = +prompt();
+    if (x !== 0) {
+        console.log('True');
+    } else {
+        console.log('False');
+    }
+
+    let a = 1;
+    if (x !== a) {
+        console.log('True');
+    } else {
+        console.log('False');
+    }
+
+    a = 0;
+    if (x !== a) {
+        console.log('True');
+    } else {
+        console.log('False');
+    }
+
+    a = -3
+    if (x !== a) {
+        console.log('True');
+    } else {
+        console.log('False');
+    }
+
+    //2.
+    time = 43;
+    if (time < 15) {
+        console.log('The time refers to the first part');
+    } else if (time >= 15 && time <= 29) {
+        console.log('The time refers to the second part');
+    } else if (time >= 30 && time <= 44) {
+        console.log('The time refers to the third part');
+    } else if (time >= 45 && time <= 59) {
+        console.log('The time refers to the fourth part');
+    }
+
+    //3.
+    let day = 23;
+    if (day <= 10) {
+        console.log('The day is in the first decade');
+    } else if (day > 10 && day <= 20) {
+        console.log('The day is in the second decade');
+    } else if (day > 20 && day <= 31) {
+        console.log('The day is in the third decade');
+    }
+
+    //4.
+    let dayNumber = 5;
+    switch (dayNumber) {
+        case 1:
+            console.log('Monday');
+            break;
+        case 2:
+            console.log('Tuesday');
+            break;
+        case 3:
+            console.log('Wednesday');
+            break;
+        case 4:
+            console.log('Thursday');
+            break;
+        case 5:
+            console.log('Friday');
+            break;
+        case 6:
+            console.log('Saturday');
+            break;
+        case 7:
+            console.log('Sunday');
+            break;
+    }
+
+    //5.
+    let numb1 = +prompt('Enter a number:'), numb2 = +prompt('Enter another number:');
+    let maxNumber = numb1 > numb2;
+    x = maxNumber ? numb1 : numb2;
+    console.log(x);
+
+    if (numb1 > numb2) {
+        console.log(numb1);
+    } else if (numb1 < numb2) {
+        console.log(numb2);
+    } else if (numb1 === numb2){
+        console.log('Numbers are equal');
+    }
+
+    //6.
+    x = '';
+    if (x == false) {
+        x = 'default';
+        console.log(x);
+    }
+</script>
+</body>
+</html>
