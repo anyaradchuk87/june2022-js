@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Title</title>
+
+  <style>
+
+    div {
+      width: 200px;
+    }
+
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<script>
+  //1.
+  function get_square_rect(a, b) {
+    return  a * b;
+  }
+  console.log(get_square_rect(3, 4));
+
+  //2.
+  function get_square_circle(r) {
+    return Math.PI * Math.pow(r, 2);
+  }
+  console.log(get_square_circle(3));
+
+  //3.
+  function get_square_cylinder(r, h) {
+    return Math.PI * Math.pow(r, 2) * h;
+  }
+  console.log(get_square_cylinder(3, 6));
+
+  //4.
+  function print_array(array) {
+    for (let i = 0; i < array.length; i++) {
+      console.log(array[i]);
+    }
+  }
+  let users = [
+    {name: 'vasyl', age: 31, status: false},
+    {name: 'petya', age: 30, status: true},
+    {name: 'kolya', age: 29, status: true},
+    {name: 'olha', age: 28, status: false},
+    {name: 'max', age: 30, status: true},
+    {name: 'anya', age: 31, status: false},
+    {name: 'oleg', age: 28, status: false},
+    {name: 'andrey', age: 29, status: true},
+    {name: 'masha', age: 30, status: true},
+    {name: 'olha', age: 31, status: false},
+    {name: 'max', age: 31, status: true}
+  ];
+  print_array(users);
+
+  //5.
+  function create_paragraph(text) {
+    document.write(`
+    <div>
+    <p>${text}</p>
+</div>`);
+  }
+  create_paragraph('Lorem ipsum');
+
+  //6.
+  function create_li_1(text) {
+    document.write(`<ul>
+    <li>${text}</li>
+    <li>${text}</li>
+    <li>${text}</li>
+    </ul>`);
+  }
+  create_li_1('Lorem ipsum', 3);
+
+  //7.
+  function create_li_2(text, n) {
+    document.write(`<ul>`);
+    for (let i = 0; i < n; i++) {
+      document.write(`
+    <li>${text}</li>`);
+    }
+    document.write(`</ul>`);
+  }
+  create_li_2('Lorem ipsum', 3);
+
+  //8.
+  function get_array() {
+    console.log(arguments);
+  }
+  get_array(34, 'main', true, 3.14, 'hello', 1987, 'Anna', false, 100, 'Bye');
+
+  //9.
+  function arrayPrinter(users) {
+    for (let user of users) {
+      document.write(`<div>${user.id} ${user.name} ${user.age}</div>`);
+    }
+  }
+  users = [
+    {id: 1, name: 'vasyl', age: 31},
+    {id: 2, name: 'petya', age: 30},
+    {id: 3, name: 'kolya', age: 29},
+    {id: 4, name: 'olha', age: 28},
+    {id: 5, name: 'max', age: 30},
+    {id: 6, name: 'anya', age: 31},
+    {id: 7, name: 'oleg', age: 28},
+    {id: 8, name: 'andrey', age: 29},
+    {id: 9, name: 'masha', age: 30},
+    {id: 10, name: 'olha', age: 31},
+    {id: 11, name: 'max', age: 31}
+  ];
+  arrayPrinter(users);
+
+  //10.
+  function get_minimum(source) {
+    return Math.min.apply(Math, source);
+  }
+
+  let array = [
+          400, 50, 3, 600, 1000, 40, 500, 80
+  ];
+  console.log(get_minimum(array));
+
+  //11.
+  function sum_array(array) {
+    let result = 0;
+    for (let i = 0; i < array.length; i++) {
+      let num = array[i];
+      result += num;
+    }
+    return result;
+  }
+  console.log(sum_array(array));
+
+</script>
+</body>
+</html>
