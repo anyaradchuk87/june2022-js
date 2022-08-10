@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+
+    <style>
+
+        div {
+            width: 200px;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //1.
+    let str1 = 'hello okten';
+    let str2 = 'lorem ipsum';
+    let str3 = 'javascript is cool';
+
+    console.log(str1.length);
+    console.log(str2.length);
+    console.log(str3.length);
+
+    //2.
+    str1 = str1.toUpperCase();
+    str2 = str2.toUpperCase();
+    str3 = str3.toUpperCase();
+
+    //3.
+    str1 = str1.toLowerCase();
+    str2 = str2.toLowerCase();
+    str3 = str3.toLowerCase();
+
+    //4.
+    let str4 = ' dirty string   ';
+    str4 = str4.trim(' ');
+    str4 = str4.trimEnd(' ');
+    console.log(str4);
+    //4a.
+    let str5 = ' dirty string   ';
+    str5 = str5.split(' ');
+    let res = '';
+    for (let i = 0; i < str5.length; i++) {
+        if (str5[i] != '') {
+            res = res.concat(str5[i] + ' ');
+        }
+    }
+    console.log(res);
+
+    //5.
+    function stringToArray(stroka) {
+        let res = '';
+        res = stroka.split(' ');
+        return res;
+    }
+    let str6 = 'Ревуть воли як ясла повні';
+    let arr1 = stringToArray(str6);
+    console.log(arr1);
+
+    //6.
+    let arr2 = [
+        10, 8, -7, 55, 987, -1011, 0, 1050, 0
+    ];
+
+    let arr3 = arr2.map(item => item.toString());
+    console.log(arr3)
+
+   // sort??
+
+    //7.
+    let coursesAndDurationArray = [
+        {title: 'JavaScript Complex', monthDuration: 5},
+        {title: 'Java Complex', monthDuration: 6},
+        {title: 'Python Complex', monthDuration: 6},
+        {title: 'QA Complex', monthDuration: 4},
+        {title: 'FullStack', monthDuration: 7},
+        {title: 'Frontend', monthDuration: 4}
+    ];
+    let sortCourses = coursesAndDurationArray.sort((course1, course2) => course1.monthDuration - course2.monthDuration);
+    sortCourses.reverse();
+    console.log(sortCourses);
+
+    //8.
+    let deckOfCards = [
+        {cardSuit: 'spade', value: '6', color: red},
+
+
+    ];
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
