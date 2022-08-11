@@ -40,8 +40,7 @@
 
     //4.
     let str4 = ' dirty string   ';
-    str4 = str4.trim(' ');
-    str4 = str4.trimEnd(' ');
+    str4 = str4.trim();
     console.log(str4);
     //4a.
     let str5 = ' dirty string   ';
@@ -72,7 +71,17 @@
     let arr3 = arr2.map(item => item.toString());
     console.log(arr3)
 
-   // sort??
+    let nums = [11, 21, 3];
+    const sortNums = (direction, arr) => {
+        if (direction === 'ascending') {
+            arr.sort((a, b) => a - b);
+        } else if (direction === 'descending') {
+            arr.sort((a, b) => b - a);
+        }
+        return arr
+    }
+    console.log(sortNums('ascending', nums));
+    console.log(sortNums('descending', nums));
 
     //7.
     let coursesAndDurationArray = [
@@ -83,16 +92,67 @@
         {title: 'FullStack', monthDuration: 7},
         {title: 'Frontend', monthDuration: 4}
     ];
-    let sortCourses = coursesAndDurationArray.sort((course1, course2) => course1.monthDuration - course2.monthDuration);
-    sortCourses.reverse();
+    let sortCourses = coursesAndDurationArray.sort((course1, course2) => course2.monthDuration - course1.monthDuration);
     console.log(sortCourses);
+
+    let filter = coursesAndDurationArray.filter(value => value.monthDuration > 5);
+    console.log(filter);
 
     //8.
     let deckOfCards = [
-        {cardSuit: 'spade', value: '6', color: red},
-
-
+        {cardSuit: 'spade', value: 6, color: 'black'},
+        {cardSuit: 'spade', value: 7, color: 'black'},
+        {cardSuit: 'spade', value: 8, color: 'black'},
+        {cardSuit: 'spade', value: 9, color: 'black'},
+        {cardSuit: 'spade', value: 10, color: 'black'},
+        {cardSuit: 'spade', value: 'jack', color: 'black'},
+        {cardSuit: 'spade', value: 'queen', color: 'black'},
+        {cardSuit: 'spade', value: 'king', color: 'black'},
+        {cardSuit: 'spade', value: 'ace', color: 'black'},
+        {cardSuit: 'clubs', value: 6, color: 'black'},
+        {cardSuit: 'clubs', value: 7, color: 'black'},
+        {cardSuit: 'clubs', value: 8, color: 'black'},
+        {cardSuit: 'clubs', value: 9, color: 'black'},
+        {cardSuit: 'clubs', value: 10, color: 'black'},
+        {cardSuit: 'clubs', value: 'jack', color: 'black'},
+        {cardSuit: 'clubs', value: 'queen', color: 'black'},
+        {cardSuit: 'clubs', value: 'king', color: 'black'},
+        {cardSuit: 'clubs', value: 'ace', color: 'black'},
+        {cardSuit: 'diamonds', value: 6, color: 'red'},
+        {cardSuit: 'diamonds', value: 7, color: 'red'},
+        {cardSuit: 'diamonds', value: 8, color: 'red'},
+        {cardSuit: 'diamonds', value: 9, color: 'red'},
+        {cardSuit: 'diamonds', value: 10, color: 'red'},
+        {cardSuit: 'diamonds', value: 'jack', color: 'red'},
+        {cardSuit: 'diamonds', value: 'queen', color: 'red'},
+        {cardSuit: 'diamonds', value: 'king', color: 'red'},
+        {cardSuit: 'diamonds', value: 'ace', color: 'red'},
+        {cardSuit: 'hearts', value: 6, color: 'red'},
+        {cardSuit: 'hearts', value: 7, color: 'red'},
+        {cardSuit: 'hearts', value: 8, color: 'red'},
+        {cardSuit: 'hearts', value: 9, color: 'red'},
+        {cardSuit: 'hearts', value: 10, color: 'red'},
+        {cardSuit: 'hearts', value: 'jack', color: 'red'},
+        {cardSuit: 'hearts', value: 'queen', color: 'red'},
+        {cardSuit: 'hearts', value: 'king', color: 'red'},
+        {cardSuit: 'hearts', value: 'ace', color: 'red'},
+        {cardSuit: null, value: 'joker', color: 'red'},
+        {cardSuit: null, value: 'joker', color: 'black'},
     ];
+    let findSpadeAce = deckOfCards.find(value => value.cardSuit === 'spade' && value.value === 'ace');
+    console.log(findSpadeAce);
+
+    let find6 = deckOfCards.filter(value => value.value === 6);
+    console.log(find6);
+
+    let findRed = deckOfCards.filter(value => value.color === 'red');
+    console.log(findRed);
+
+    let findDiamonds = deckOfCards.filter(value => value.cardSuit === 'diamonds');
+    console.log(findDiamonds);
+
+    let find9MoreClubs = deckOfCards.filter(value => value.cardSuit === 'clubs' && (value.value >= 9 || typeof value.value === 'string'));
+    console.log(find9MoreClubs);
 
 
 
