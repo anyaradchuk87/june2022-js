@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Title</title>
+
+  <style>
+
+    div {
+      width: 200px;
+    }
+
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<script>
+  //1. User
+  function User(id, name, surname, email, phone) {
+    this.id = id;
+    this.name = name;
+    this.surname = surname;
+    this.email = email;
+    this.phone = phone;
+  }
+
+  let users = [];
+
+  let user1 = new User(1, 'Anna', 'Radchuk', 'anyavovk@i.ua', '0680173924');
+  let user2 = new User(2, 'Lesia', 'Ukrainka', 'lesia@gmail.com', '0966853375');
+  let user3 = new User(5, 'Inna', 'Tuz', 'innaa@i.ua', '0685434224');
+  let user4 = new User(8, 'Lesia', 'Ukrainka', 'lesia@gmail.com', '0966853375');
+  let user5 = new User(3, 'Anna', 'Radchuk', 'anyavovk@i.ua', '0680173924');
+  let user6 = new User(6, 'Lesia', 'Ukrainka', 'lesia@gmail.com', '0966853375');
+  let user7 = new User(7, 'Anna', 'Radchuk', 'anyavovk@i.ua', '0680173924');
+  let user8 = new User(9, 'Lesia', 'Ukrainka', 'lesia@gmail.com', '0966853375');
+  let user9 = new User(4, 'Anna', 'Radchuk', 'anyavovk@i.ua', '0680173924');
+  let user10 = new User(10, 'Lesia', 'Ukrainka', 'lesia@gmail.com', '0966853375');
+
+  users.push(user1);
+  users.push(user2);
+  users.push(user3);
+  users.push(user4);
+  users.push(user5);
+  users.push(user6);
+  users.push(user7);
+  users.push(user8);
+  users.push(user9);
+  users.push(user10)
+
+  console.log(users);
+
+  //2. filter
+ let filterEven = users.filter(value => !(value.id % 2));
+ console.log(filterEven);
+
+ //3. sort
+ let filterSort = users.sort((a, b) => a.id - b.id);
+ console.log(filterSort);
+
+ //4. Client
+ class Client {
+   constructor(id, name, surname, email, phone, order = []) {
+     this.id - id;
+     this.name = name;
+     this.surname = surname;
+     this.email = email;
+     this.phone = phone;
+     this.order = order;
+   }
+ }
+
+ let clients = [];
+ let client1 = new Client(1, 'vasya', 'pupkin', 'vas@i.ua', '09382', ['tomatoes', 'eggs', 'iphone14']);
+ clients.push(client1);
+ let client2 = new Client(5, 'petya', 'pupk', 'pet@i.ua', '0345382', ['eggs', 'iphone14']);
+ clients.push(client2);
+ let client3 = new Client(2, 'inna', 'dfsefw', 'inna@i.ua', '023482', ['eggs', 'iphone14', 'socks', 'shoes']);
+ clients.push(client3);
+ let client4 = new Client(4, 'dusya', 'jkd', 'dus@i.ua', '3276232', ['eggs', 'iphone14', 'bread']);
+ clients.push(client4);
+ let client5 = new Client(3, 'ira', 'sdfsd', 'ira@i.ua', '987437382', ['iphone14']);
+ clients.push(client5);
+ let client6 = new Client(8, 'demian', 'kurkin', 'dem@i.ua', '0433482', ['tomatoes', 'eggs']);
+ clients.push(client6);
+ let client7 = new Client(7, 'lusia', 'kurochkina', 'lus@i.ua', '345382', ['eggs', 'iphone14', 'shoes', 'cucumbers']);
+ clients.push(client7);
+ let client8 = new Client(6, 'anna', 'deseffw', 'anna@i.ua', '3243482', ['eggs', 'socks', 'shoes']);
+ clients.push(client8);
+ let client9 = new Client(9, 'zina', 'esdfsdf', 'zin@i.ua', '32142332', ['bread', 'cucumbers', 'wine']);
+ clients.push(client9);
+ let client10 = new Client(10, 'ignat', 'swefwsd', 'ign@i.ua', '9842322', ['iphone14', 'tea', 'coffee', 'cake']);
+ clients.push(client10);
+
+ console.log(clients);
+
+ //5. Sort client
+ let sort1 = clients.sort((a, b) => a.order.length - b.order.length);
+ console.log(sort1);
+
+ //6. Car
+  function Car(model, producer, year, maxSpeed, engineCapacity) {
+    this.model = model;
+    this.producer = producer;
+    this.year = year;
+    this.maxSpeed = maxSpeed;
+    this.engineCapacity = engineCapacity;
+    this.drive = function () {
+      console.log(`їдемо зі швидкістю ${this.maxSpeed} на годину`);
+    };
+    this.info = function () {
+      console.log(`model - ${this.model}`);
+      console.log(`producer - ${this.producer}`);
+      console.log(`year - ${this.year}`);
+      console.log(`max speed - ${this.maxSpeed}`);
+      console.log(`engine capacity - ${this.engineCapacity}`);
+    };
+    this.increaseSpeed = function (newSpeed) {
+      this.maxSpeed += newSpeed;
+    };
+    this.changeYear = function (newValue) {
+      this.year = newValue;
+    };
+    this.addDriver = function (driver = {}) {
+      this.Car.push(driver);
+    };
+  }
+
+  //7. Class Car
+  class Car1 {
+    constructor(model, producer, year, maxSpeed, engineCapacity) {
+      his.model = model;
+      this.producer = producer;
+      this.year = year;
+      this.maxSpeed = maxSpeed;
+      this.engineCapacity = engineCapacity;
+    }
+    drive() {
+      console.log(`їдемо зі швидкістю ${this.maxSpeed} на годину`);
+    };
+    info() {
+      console.log(`model - ${this.model}`);
+      console.log(`producer - ${this.producer}`);
+      console.log(`year - ${this.year}`);
+      console.log(`max speed - ${this.maxSpeed}`);
+      console.log(`engine capacity - ${this.engineCapacity}`);
+    };
+    increaseSpeed(newSpeed) {
+      this.maxSpeed += newSpeed;
+    };
+    changeYear(newValue) {
+      this.year = newValue;
+    };
+    addDriver(driver = {}) {
+      this.Car1.push(driver);
+    };
+  }
+
+  //8.
+  class Cinderella {
+    constructor(name, age, size) {
+      this.name = name;
+      this.age = age;
+      this.size = size;
+    }
+  }
+  arrCinder = [];
+  let cinder1 = new Cinderella('anna', 31, 37);
+  arrCinder.push(cinder1);
+  let cinder2 = new Cinderella('lida', 30, 40);
+  arrCinder.push(cinder2);
+  let cinder3 = new Cinderella('dusia', 29, 36);
+  arrCinder.push(cinder3);
+  let cinder4 = new Cinderella('zina', 26, 38);
+  arrCinder.push(cinder4);
+  let cinder5 = new Cinderella('olha', 30, 39);
+  arrCinder.push(cinder5);
+  let cinder6 = new Cinderella('karina', 34, 41);
+  arrCinder.push(cinder6);
+  let cinder7 = new Cinderella('kate', 27, 35);
+  arrCinder.push(cinder7);
+  let cinder8 = new Cinderella('olena', 33, 36);
+  arrCinder.push(cinder8);
+  let cinder9 = new Cinderella('luda', 28, 37);
+  arrCinder.push(cinder9);
+  let cinder10 = new Cinderella('anna', 27, 38);
+  arrCinder.push(cinder10);
+  console.log(arrCinder);
+
+  class Prince {
+    constructor(name, age, shoeSize) {
+      this.name = name;
+      this.age = age;
+      this.shoeSize = shoeSize;
+    }
+  }
+  let prince1 = new Prince('harry', 29, 35);
+  console.log(prince1);
+
+  for (let lady of arrCinder) {
+    if (lady.size === prince1.shoeSize) {
+      console.log(lady);
+    }
+  }
+
+  let findCinder = arrCinder.find(value => value.size === prince1.shoeSize);
+  console.log(findCinder);
+
+
+
+</script>
+</body>
+</html>
