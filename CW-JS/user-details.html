@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Title</title>
+
+  <style>
+    /*user-details.html - блок з інфою про user зверху
+    сторінки. Кнопка нижчє, на 90% ширини сторінки,
+    по центру.*/
+    /*блоки з короткою інфою про post - в ряд по 5 .*/
+    /*Всі елементи котрі характеризують users, posts, comments
+    візуалізувати, так, щоб було видно що це блоки (дати фон. марджини і тд)*/
+
+    body{
+      max-width: 1400px;
+      margin: auto;
+    }
+    .button{
+      background-color: navajowhite;
+      width: 90%;
+      padding: 14px 40px;
+      margin: 0 auto;
+      display: block;
+    }
+    .details{
+      display: flex;
+    }
+    .block{
+      border: 1px solid black;
+      padding: 4%;
+      border-radius: 1em;
+      width: 33%;
+      margin: 4px;
+    }
+  </style>
+</head>
+<body>
+<script>
+
+  // На странице user-details.html:
+  // 4 Вивести всю, без виключення, інформацію про об'єкт user на який клікнули
+  // 5 Додати кнопку "post of current user", при кліку на яку, з'являються title всіх постів поточного юзера
+  // (для получения постов используйте эндпоинт https://jsonplaceholder.typicode.com/users/USER_ID/posts)
+  // 6 Каждому посту додати кнопку/посилання, при кліку на яку відбувається перехід на сторінку
+  // post-details.html, котра має детальну інфу про поточний пост.
+  //
+  let url = new URL(location.href);
+  let userId = url.searchParams.get('id');
+
+  fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+          .then(response => response.json())
+          .then(data => {
+            let div = document.createElement('div');
+            div.classList.add('details');
+            document.body.appendChild(div);
+
+            let divUser = document.createElement('div');
+            divUser.classList.add('block');
+            let divAddress = document.createElement('div');
+            divAddress.classList.add('block');
+            let divCompany = document.createElement('div');
+            divCompany.classList.add('block');
+            div.append(divUser, divAddress, divCompany);
+
+            divUser.innerHTML = `<h4>General information</h4>`;
+            let ul1 = document.createElement('ul');
+            divUser.appendChild(ul1);
+            ul1.innerHTML = `<li>Name: ${data.name}</li>\n
+<li>Username: ${data.username}</li>\n
+<li>E-mail: ${data.email}</li>\n
+<li>Phone: ${data.phone}</li>\n
+<li>Website: ${data.website}</li>\n`;
+
+            divAddress.innerHTML = `<h4>Address</h4>`;
+            let ul2 = document.createElement('ul');
+            divAddress.appendChild(ul2);
+            ul2.innerHTML = `<li>Street: ${data.address.street}</li>\n
+<li>Suite: ${data.address.suite}</li>\n
+<li>City: ${data.address.city}</li>\n
+<li>Zip-code: ${data.address.zipcode}</li>\n
+<li>Website: ${data.website}</li>\n`;
+
+            divCompany.innerHTML = `<h4>Company</h4>`;
+            let ul3 = document.createElement('ul');
+            divCompany.appendChild(ul3);
+            ul3.innerHTML = `<li>Name: ${data.company.name}</li>\n
+<li>Catch phrase: ${data.company.catchPhrase}</li>\n
+<li>BS: ${data.company.bs}</li>\n`;
+
+
+            //   function recurs (item) {
+          //     for (let elem in item) {
+          //       if (typeof item[elem] !== 'object') {
+          //         let p = document.createElement('p');
+          //         p.innerText = `${elem}: ${item[elem]}`;
+          //         div.appendChild(p);
+          //       } else {
+          //         recurs(item[elem]);
+          //       }
+          //     }
+          //   }
+          //   recurs(data);
+
+          });
+
+
+  fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+          .then(response => response.json())
+          .then(posts => {
+            let button = document.createElement('button');
+            button.classList.add('button');
+            button.innerText = 'post of current user'
+            let div = document.createElement('div');
+            div.classList.add('click');
+            document.body.appendChild(div);
+            div.appendChild(button);
+
+            button.onclick = function () {
+              let div = document.createElement('div');
+              div.id = 'post';
+              document.body.appendChild(div);
+
+              for (let elem of posts) {
+                let a = document.createElement('a');
+                a.innerText = `Post\'s ID: ${elem.id}, title: ${elem.title}\n`;
+                a.href = `post-details.html?id=${elem.id}`;
+                a.target = '_self';
+                a.title = 'Details';
+                div.appendChild(a);
+              }
+            }
+          });
+
+</script>
+</body>
+</html>

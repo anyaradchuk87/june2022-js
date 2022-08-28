@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Title</title>
+
+  <style>
+    /*Стилизація проєкта -*/
+    /*index.html - всі блоки з user - по 2 в рядок.
+    кнопки/аосилвння розташувати під інформацією про user.*/
+    /*блоки з короткою інфою про post - в ряд по 5 .*/
+    /*Всі елементи котрі характеризують users, posts, comments
+    візуалізувати, так, щоб було видно що це блоки (дати фон. марджини і тд)*/
+
+    *{
+      box-sizing: border-box;
+    }
+    body{
+      max-width: 1400px;
+      margin: auto;
+    }
+    .users{
+      display: flex;
+      flex-wrap: wrap;
+      width: 680px;
+      margin: auto;
+    }
+    .user{
+      width: 40%;
+      height: 150px;
+      margin: 4px;
+      border: 1px solid black;
+      padding: 4px;
+      border-radius: 1em;
+    }
+  </style>
+</head>
+<body>
+<script>
+  // В index.html
+  // 1 отримати масив об'єктів з endpoint`а https://jsonplaceholder.typicode.com/users
+  // 2 Вивести id,name всіх user в index.html. Окремий блок для кожного user.
+  // 3 Додати кожному блоку кнопку/посилання , при кліку на яку відбувається перехід  на сторінку
+  // user-details.html, котра має детальну інформацію про об'єкт на який клікнули
+  //
+
+  let mainDiv = document.createElement('div');
+  mainDiv.classList.add('users');
+  document.body.appendChild(mainDiv);
+
+  fetch('https://jsonplaceholder.typicode.com/users')
+          .then(response => response.json())
+          .then(users => users.forEach(user => {
+            let div = document.createElement('div');
+            div.classList.add('user');
+            // div.innerText = `${user.id}. ${user.name}  `;
+            mainDiv.appendChild(div);
+
+            let p1 = document.createElement('p');
+            p1.innerText = `ID: ${user.id}.`;
+            div.appendChild(p1);
+
+            let p2 = document.createElement('p');
+            p2.innerText = `Name: ${user.name}`;
+            div.appendChild(p2);
+
+            let a = document.createElement('a');
+            a.innerText = `Details`;
+            a.href = `user-details.html?id=${user.id}`;
+            a.target = '_self';
+            a.title = 'Details';
+            div.appendChild(a);
+
+            // let button = document.createElement('button');
+            // button.innerText = 'Details';
+            // div.appendChild(button);
+
+          }));
+
+</script>
+</body>
+</html>
