@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+
+    <style>
+
+
+    </style>
+</head>
+<body>
+<script>
+    // Зробити свій розпорядок дня.
+    //     У вас має бути більше 10 асинхронних дій з рандомними затримками.
+    //     Вам необхідно синхронізувати всі свої дії за допомогою промісів та async await (Код має бути написаний окремо)
+    // Затримка має бути НЕ в порядку зростання, а будь яка. При тому ваші дії мають бути синхронізовані.
+    //
+    //     Наприклад.
+    //     Прокнутись - 0.3с
+    // Поснідати - 1с
+    // Піти в душ - 0.5с
+    // Дочекатись автобус - 3с
+    // Пообідати - 1с
+    let wakeUp = false;
+    let breakfastDone = false;
+    let showerDone = false;
+    let busCatch = false;
+    let lunchDone = false;
+    
+    function workDay(isWorkingDay) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (isWorkingDay) {
+                    wakeUp = true;
+                    resolve(wakeUp);
+                } else {
+                    console.log('Relax');
+                    reject('sleeping day');
+                }
+            }, 300);
+        })
+    }
+    
+    function haveBreakfast(wakeUp) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (wakeUp) {
+                    console.log('Bon appetite!');
+                    breakfastDone = true;
+                    resolve(breakfastDone);
+                } else {
+                    console.log('Sleep');
+                    reject('Long sleeping!!');
+                }
+            }, 1000);
+        })
+    }
+    
+    function takeShower(breakfastDone) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (breakfastDone) {
+                    console.log('Good water!!')
+                    showerDone = true;
+                    resolve(showerDone);
+                } else {
+                    console.log('Are you still alive?))');
+                    reject('No shower');
+                }
+            }, 500);
+        })
+    }
+    
+    function catchBus(showerDone) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (showerDone) {
+                    console.log('I\'m going to work');
+                    busCatch = true;
+                    resolve('The bus is here!');
+                } else {
+                    console.log('Not your day!');
+                    reject('Go home');
+                }
+            }, 3000);
+        })
+    }
+    
+    function eatLunch(busCatch) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (busCatch) {
+                    console.log('Bon appetite!');
+                    lunchDone = true;
+                    resolve('You are lucky')
+                } else {
+                    console.log('Go sleep again!');
+                    reject('The end')
+                }
+            }, 1000);
+        })
+    }
+
+    async function normalDay() {
+        const a = await workDay(true);
+        const b = await haveBreakfast(a);
+        const c = await takeShower(b);
+        const d = await catchBus(c);
+        const e = await eatLunch(d);
+
+        console.log(e);
+    }
+
+    normalDay();
+
+
+
+</script>
+</body>
+</html>
